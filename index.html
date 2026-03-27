@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-solid/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css'>
+    <title>Intake</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body>
+    <div></div>
+    <div class="overview-container" id="overviewTab">
+
+        <div class="overview-head">
+            
+            <div class="overview-welcome">
+                <h1>Intake</h1>
+            </div>
+            <div class="overview-head-right">
+                <button class="top-avatar-btn" type="button" onclick="openUser()" aria-label="Zu User"><i class="fi fi-rr-user"></i></button>
+                <img src="assets/icon.png" alt="" style="width: 35px; height: 35px; border-radius: 2px;">
+            </div>
+        </div>
+
+        <div>
+            <div class="today-t">
+                <h2 id="todayKcalValue">0 kcal</h2>
+            </div>
+
+        </div>
+        <div class="progress-l">
+            <div class="pr-og">
+                <progress id="kcalProgress" type="range" min="0" max="2000" value="0"></progress>
+            </div>
+            <div class="circle"></div>
+        </div>
+
+        <div class="con-ov">
+            <section class="sec">
+                <h2 id="goalKcal" style="color: #8f9298;;">0 kcal</h2>
+                <h1 class="lower-tsa">Daily Goal</h1>
+            </section>
+        </div>
+
+        <div class="macro-cards">
+            <section class="macro-card">
+                <h3>Carbs</h3>
+                <p id="goalCarbs">0 / 359g</p>
+                <div class="mini-progress"><span id="goalCarbsBar" style="width: 72%;"></span></div>
+            </section>
+            <section class="macro-card">
+                <h3>Protein</h3>
+                <p id="goalProtein">0 / 143g</p>
+                <div class="mini-progress"><span id="goalProteinBar" style="width: 100%;"></span></div>
+            </section>
+            <section class="macro-card">
+                <h3>Fett</h3>
+                <p id="goalFat">0 / 359g</p>
+                <div class="mini-progress"><span id="goalFatBar" style="width: 47%;"></span></div>
+            </section>
+        </div>
+
+        <div class="date-row">
+            <button class="date-arrow" aria-label="Vorheriger Tag"><i class="fi fi-rr-angle-small-left"></i></button>
+            <p>Heute</p>
+            <button class="date-arrow" aria-label="Nächster Tag"><i class="fi fi-rr-angle-small-right"></i></button>
+        </div>
+
+        <section class="user-card food-log-card">
+            <div class="food-log-head">
+                <h3>Heute</h3>
+                <button class="clear-food-btn" id="clearFoodsBtn" type="button">Clear</button>
+            </div>
+            <div id="foodLogList"></div>
+        </section>
+
+    </div>
+
+    <div class="user-container hidden" id="userTab">
+    <div class="overview-welcome">
+                <h1>User</h1>
+            </div>
+
+    <section class="user-card" style="margin-bottom: 15vh;">
+
+        <div class="mode-switch">
+            <button class="mode-btn active" id="autoModeBtn" type="button">Auto</button>
+            <button class="mode-btn" id="manualModeBtn" type="button">Manuell</button>
+        </div>
+
+        <div id="autoModeArea">
+            <label for="weightInput">Gewicht (kg)</label>
+            <input id="weightInput" type="number" min="30" max="350" step="0.1" placeholder="z.B. 78.5">
+            <p class="helper-text">kcal = Gewicht x 33, Protein = Gewicht x 2, Fett = Gewicht x 0.9</p>
+        </div>
+
+        <div id="manualModeArea" class="hidden">
+            <label for="manualKcal">Kcal Ziel</label>
+            <input id="manualKcal" type="number" min="800" max="8000" step="1" placeholder="2400">
+
+            <label for="manualProtein">Protein (g)</label>
+            <input id="manualProtein" type="number" min="20" max="400" step="1" placeholder="160">
+
+            <label for="manualFat">Fett (g)</label>
+            <input id="manualFat" type="number" min="10" max="250" step="1" placeholder="80">
+
+            <label for="manualCarbs">Carbs (g)</label>
+            <input id="manualCarbs" type="number" min="20" max="1000" step="1" placeholder="260">
+        </div>
+
+        <button class="save-user-btn" id="saveUserBtn" type="button">Speichern</button>
+    </section>
+    <div class="user-header" style=" display: flex;flex-direction: row; justify-content: space-between; ">
+            <div class="about-inner" >
+                <div class="about-inner-sec">
+                    <h3 class="label">Intake</h3>
+                    <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Version 2.1.0</p>
+                    <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Developer: Dion Beres</p>
+                
+                    <h3 class="label">Social</h3>
+                <div class="user-card-links" style=" display: flex; flex-direction: row; gap: 20px; ">
+                    
+                    <a href="https://github.com/dionberes" target="_blank">
+                    <i class="fi fi-brands-github"></i></a>
+
+                    <a href="https://www.instagram.com/dionberes/" target="_blank">
+                    <i class="fi fi-brands-instagram"></i></a>
+
+                    <a href="https://github.com/dionberes" target="_blank">
+                    <i class="fi fi-brands-tik-tok"></i></a>
+
+                    <a href="https://github.com/dionberes" target="_blank">
+                    <i class="fi fi-brands-facebook"></i></a>
+                </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="add-container hidden" id="addTab">
+        <div class="user-header">
+            <h2>Essen hinzufügen</h2>
+        </div>
+
+        <section class="user-card">
+            <div class="mode-switch">
+                <button class="mode-btn active" id="foodDbModeBtn" type="button">Suchen</button>
+                <button class="mode-btn" id="foodManualModeBtn" type="button">Manuell</button>
+            </div>
+
+            <div id="foodDbArea">
+                <label for="foodSearchInput">Essen suchen</label>
+                <input id="foodSearchInput" type="text" placeholder="z.B. Chicken Breast">
+                <div class="food-search-results" id="foodSearchResults"></div>
+
+                <label for="foodAmountInput">Menge (Portionen)</label>
+                <input id="foodAmountInput" type="number" min="0.1" step="0.1" value="1">
+
+                <div class="selected-food-card" id="selectedFoodCard">
+                    <p>Kein Essen gewählt.</p>
+                </div>
+            </div>
+
+            <div id="foodManualArea" class="hidden">
+                <label for="manualFoodName">Name</label>
+                <input id="manualFoodName" type="text" placeholder="z.B. Selfmade Wrap">
+
+                <label for="manualFoodKcal">Kcal</label>
+                <input id="manualFoodKcal" type="number" min="1" step="1" placeholder="z.B. 620">
+
+                <label for="manualFoodProtein">Protein (g)</label>
+                <input id="manualFoodProtein" type="number" min="0" step="1" placeholder="z.B. 42">
+
+                <label for="manualFoodFat">Fett (g)</label>
+                <input id="manualFoodFat" type="number" min="0" step="1" placeholder="z.B. 21">
+
+                <label for="manualFoodCarbs">Carbs (g)</label>
+                <input id="manualFoodCarbs" type="number" min="0" step="1" placeholder="z.B. 56">
+            </div>
+
+            <button class="save-user-btn" id="saveFoodBtn" type="button">hinzufügen</button>
+        </section>
+
+    </div>
+
+
+    <div class="bottom-hero">
+        <section class="btn-container">
+            <section class="hero-btns">
+                <button class="btn" id="homeBtn" onclick="openHome()"><i class="fi fi-rr-home"></i></button>
+                <h2>Overview</h2>
+            </section>
+            <section class="hero-btns">   
+              <button class="btn-add" id="addBtn" onclick="openAdd()"><i class="fi fi-sr-plus"></i></button>
+            </section>  
+            <section class="hero-btns"> 
+              <button class="btn" id="userBtn" onclick="openUser()"><i class="fi fi-rr-user"></i></button>
+              <h2>User</h2>
+            </section> 
+        </section>
+    </div>
+
+    <script src="assets/data/foods-de.js"></script>
+    <script src="backend/IndexLoader.js"></script>
+
+</body>
+</html>
