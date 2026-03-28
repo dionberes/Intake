@@ -13,7 +13,6 @@ html, body {
     scroll-behavior: smooth;
     height: 110vh;
     overflow-x: hidden;
-    overflow-y: hidden;
 
 }
 h1{
@@ -719,7 +718,12 @@ progress::-moz-progress-bar {
     --card-shadow: 0 8px 20px rgba(16, 18, 20, 0.06);
     --soft-shadow: 0 4px 12px rgba(16, 18, 20, 0.05);
 }
-
+html{
+    background: #4C4E43;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
 body{
     background: radial-gradient(circle at 50% -20%, #4C4E43 0%, #4C4E43 38%, #DCD9C8 100%);
     background-repeat: no-repeat;
