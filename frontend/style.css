@@ -64,7 +64,6 @@ h1{
     flex-direction: row;
     margin-bottom: 2vh;
     justify-content: space-around;
-    gap: 10px;
 }.btn-container section:hover{
     cursor: pointer;
 }
@@ -80,7 +79,6 @@ h1{
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.575);
 } .btn-add i{
     font-size: 1.5rem;
-
     color: white;
     
 }.btn-add:hover{
@@ -693,7 +691,7 @@ progress::-moz-progress-bar {
 .btn i{
     color: #aab0a5;
 }
-.btn i:hover{
+.btn i:hover  {
     color: #dde9ae;
 }
 .btn-add{
@@ -824,6 +822,7 @@ body{
 .user-header p,
 .date-row,
 .sec h1{
+    font-family: 'Times New Roman', Times, serif;
     color: #9aa2b2;
 }
 
@@ -912,8 +911,9 @@ progress::-moz-progress-bar{
 
 .bottom-hero{
     width: 100%;
-    left: 50%;
-    height: 1S0vh;
+    left: 110;
+    right: 110;
+    height: 8vh;
     background: #1516139c;
     border: none;
     box-shadow: 0 -14px 30px rgba(0, 0, 0, 0.38);
@@ -934,10 +934,10 @@ progress::-moz-progress-bar{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     margin-top: 10px;
+    gap: 10px;
 }
-.cont-act{
+.cont-act{ 
     border: none;
     background: none;
     box-shadow: none;
