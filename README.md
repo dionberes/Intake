@@ -1,19 +1,17 @@
-<img width="50" height="50" alt="image" src="https://github.com/user-attachments/assets/88eda4d8-0bac-4dc1-9bce-8df76beffc39" />
+# Food Tracking App
 
-<h1>Food Tracking App</h1>
+![Icon](https://github.com/user-attachments/assets/0bfc8da5-6cdc-46d5-be4c-6c686d54fa40)
 
-`Intake` is a cost free app for tracking your kcal, proteins, fats and Carbs
+**Intake** is a free app for tracking your calories, protein, fats, and carbs.
 
+## Version
+v2.1.2  
+Last update: 04.04.2026
 
+## Update v2.1.2
+- New UI
+- New backend system
+- Mobile friendlier system
 
-This is the second version of the App/WebApp.
-<div>
-	Update:
-	
-	  + New UI,UIX
-	  + New Backend system
-	  + New Mobile System
-	  + New FoodDataBase
-</div>
-<h5>v2.0.2</h5>
-<h5>https://dionberes.github.io/Intake/</h5>
+## Demo
+👉 https://dionberes.github.io/Intake/
