@@ -4,7 +4,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,viewport-fit=cover, user-scalable=no">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-solid/css/uicons-regular-rounded.css'>
@@ -165,26 +165,26 @@
 
     <div class="add-container hidden" id="addTab">
         <div class="overview-welcome">
-                <h1>Essen Eintragen</h1>
+                <h1>Add Food</h1>
         </div>
      
 
         <section class="user-card">
             <div class="mode-switch">
-                <button class="mode-btn active" id="foodDbModeBtn" type="button">Suchen</button>
-                <button class="mode-btn" id="foodManualModeBtn" type="button">Manuell</button>
+                <button class="mode-btn active" id="foodDbModeBtn" type="button">Search</button>
+                <button class="mode-btn" id="foodManualModeBtn" type="button">Manual</button>
             </div>
 
             <div id="foodDbArea">
-                <label for="foodSearchInput">Essen suchen</label>
-                <input id="foodSearchInput" type="text" placeholder="Nach Essen suchen">
+                <label for="foodSearchInput">Search Food</label>
+                <input id="foodSearchInput" type="text" placeholder="Search for food">
                 <div class="food-search-results" id="foodSearchResults"></div>
 
-                <label for="foodAmountInput">Menge (Portionen)</label>
+                <label for="foodAmountInput">Amount (Portion)</label>
                 <input id="foodAmountInput" type="number" min="0.1" step="0.1" value="1">
 
                 <div class="selected-food-card" id="selectedFoodCard">
-                    <p>Kein Essen gewählt.</p>
+                    <p>No food selected.</p>
                 </div>
             </div>
 
