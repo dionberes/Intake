@@ -242,14 +242,14 @@ function renderFoodLog() {
     const log = loadFoodLog();
     list.innerHTML = "";
     if (!log.length) {
-        list.innerHTML = "<p class='food-search-empty'>Noch keine Foods hinzugefuegt.</p>";
+        list.innerHTML = "<p class='food-search-empty'>Nothing yet added.</p>";
         return;
     }
 
     log.slice().reverse().forEach(item => {
         const row = document.createElement("div");
         row.className = "food-log-item";
-        row.innerHTML = "<div><h4>" + item.name + "</h4><p>" + item.kcal + " kcal | P " + item.protein + " | F " + item.fat + " | C " + item.carbs + "</p></div><button type='button' data-id='" + item.id + "'>x</button>";
+        row.innerHTML = "<div><h4>" + item.name + "</h4><p>" + item.kcal + " kcal | P " + item.protein + " | F " + item.fat + " | C " + item.carbs + "</p></div><button type='button' class='del-btn' style='background-color: transparent; border: none;' data-id='" + item.id + "'><i class='fi fi-tr-circle-xmark'></i></button>";
         row.querySelector("button").addEventListener("click", () => removeFood(item.id));
         list.appendChild(row);
     });
