@@ -12,7 +12,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    color: #1D1D1D;
+    color: #212121;
     background: #f1f1f1; /*#11141b;*/
     scroll-behavior: smooth;
     height: 110vh;
@@ -472,7 +472,7 @@ progress::-moz-progress-bar {
 }
 
 html, body {
-    background:  #f1f1f1; /*#11141b;*/;
+    background:  #212121; /*#11141b;*/;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -736,6 +736,9 @@ html, body{
     min-height: 100vh;
     color: var(--text-main);
     font-family: 'Inter' , sans-serif;
+}
+.body{
+    padding-top: env(safe-area-inset-top);
 }
 .top-frame-xdc{
     background:
