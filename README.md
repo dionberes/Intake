@@ -1,11 +1,11 @@
 # Food Tracking App
-
-![Icon](https://github.com/user-attachments/assets/0bfc8da5-6cdc-46d5-be4c-6c686d54fa40)
+<img width="2048" height="2048" alt="icon" src="https://github.com/user-attachments/assets/0572832b-933e-4b67-ac21-3b24ff3459ae" />
 
 **Intake** is a free app for tracking your calories, protein, fats, and carbs.
+Our moto is "Why should apps for your health cost?"
 
 ## Version
-v2.1.2  
+v2.3.2  
 Last update: 04.04.2026
 
 ## Update v2.1.2
