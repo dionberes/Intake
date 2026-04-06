@@ -1,6 +1,6 @@
 const STORAGE_KEY = "bulkTrackerUserSettingsV1";
 const FOOD_LOG_KEY = "bulkTrackerFoodLogV1";
-const FOOD_DB = window.FOOD_DB_DE || [];
+// const FOOD_DB = window.FOOD_DB_DE || [];
 let selectedFood = null;
 
 function formatNumber(value) {
@@ -177,9 +177,9 @@ function renderSearchResults(query) {
 
     if (!search) return;
 
-    const matches = FOOD_DB.filter(food => food.name.toLowerCase().includes(search)).slice(0, 5);
+    const matches = (window.FOOD_DB_DE || []).filter(food => food.name.toLowerCase().includes(search)).slice(0, 4);
     if (!matches.length) {
-        container.innerHTML = "<p class='food-search-empty'>Keine Treffer.</p>";
+        container.innerHTML = "<p class='food-search-empty'>No results.</p>";
         return;
     }
 
@@ -249,10 +249,12 @@ function renderFoodLog() {
     log.slice().reverse().forEach(item => {
         const row = document.createElement("div");
         row.className = "food-log-item";
+        row.id = "food-log-item"
         row.innerHTML = "<div><h4>" + item.name + "</h4><p>" + item.kcal + " kcal | P " + item.protein + " | F " + item.fat + " | C " + item.carbs + "</p></div><button type='button' class='del-btn' style='background-color: transparent; border: none;' data-id='" + item.id + "'><i class='fi fi-tr-circle-xmark'></i></button>";
         row.querySelector("button").addEventListener("click", () => removeFood(item.id));
         list.appendChild(row);
     });
+    showInfo();
 }
 
 function addFoodEntry() {
@@ -289,21 +291,116 @@ function openHome() {
     document.getElementById("overviewTab").classList.remove("hidden");
     document.getElementById("userTab").classList.add("hidden");
     document.getElementById("addTab").classList.add("hidden");
+    document.getElementById("AppendTab").classList.add("hidden");
+    document.getElementById("StatsTab").classList.add("hidden");
 }
 
 function openUser() {
     document.getElementById("overviewTab").classList.add("hidden");
     document.getElementById("userTab").classList.remove("hidden");
     document.getElementById("addTab").classList.add("hidden");
+    document.getElementById("AppendTab").classList.add("hidden");
+    document.getElementById("StatsTab").classList.add("hidden");
 }
 
 function openAdd() {
     document.getElementById("overviewTab").classList.add("hidden");
     document.getElementById("userTab").classList.add("hidden");
     document.getElementById("addTab").classList.remove("hidden");
+    document.getElementById("AppendTab").classList.add("hidden");
+    document.getElementById("StatsTab").classList.add("hidden");
     renderFoodLog();
 }
 
+function openMeals() {
+    document.getElementById("overviewTab").classList.add("hidden");
+    document.getElementById("userTab").classList.add("hidden");
+    document.getElementById("addTab").classList.add("hidden");
+    document.getElementById("AppendTab").classList.remove("hidden");
+    document.getElementById("StatsTab").classList.add("hidden");
+}
+function openStats() {
+    document.getElementById("overviewTab").classList.add("hidden");
+    document.getElementById("userTab").classList.add("hidden");
+    document.getElementById("addTab").classList.add("hidden");
+    document.getElementById("AppendTab").classList.add("hidden");
+    document.getElementById("StatsTab").classList.remove("hidden");
+
+    renderStatsChart();
+}
+
+function renderStatsChart() {
+    const foodLog = loadFoodLog();
+    const consumed = sumFoodTotals(foodLog);
+
+    const ctx = document.getElementById('MealsChart');
+    if (window.statsChart) {
+        window.statsChart.destroy();
+    }
+    window.statsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Kcal', 'Protein', 'Fat', 'Carbs'],
+            datasets: [{
+                label: 'Consumed Today',
+                data: [consumed.kcal, consumed.protein, consumed.fat, consumed.carbs],
+                backgroundColor: [
+                    '#EDCBE3',
+                    '#CFDECB',
+                    '#EFEDA2',
+                    '#cbdeed'
+                ],
+                borderWidth: 1,
+                borderRadius: 10,
+
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                title: {
+                    display: true,
+                    text: 'Todays Intake'
+                }
+            },
+            scales: {
+                y: {
+                    display: false,
+                },
+                x: {
+                    display: true,
+                    grid: {
+                        display: false,
+                    },
+                    line: {
+                        display: false,
+                    },
+                    position: "top",
+                    border: {display: false,}
+                }
+            },
+        }
+    });
+}
+
+function showInfo() {
+    const foodLog = loadFoodLog();
+    const consumed = sumFoodTotals(foodLog);
+
+    const KcalLabel = document.getElementById("TotalKcal");
+    const ProteinLabel = document.getElementById("TotalProtein");
+    const FatLabel = document.getElementById("TotalFat");
+    const CarbsLabel = document.getElementById("TotalCarbs");
+
+
+    KcalLabel.textContent = formatNumber(Math.round(consumed.kcal)) + " kcal";
+    ProteinLabel.textContent = formatNumber(Math.round(consumed.protein)) + " g";
+    FatLabel.textContent = formatNumber(Math.round(consumed.fat)) + " g";
+    CarbsLabel.textContent = formatNumber(Math.round(consumed.carbs)) + " g";
+}
 // zeigt eine "quote" an
 function showRandomQuote() {
     const quotes = [
@@ -345,4 +442,4 @@ if (initialSettings) {
 }
 setFoodMode("db");
 renderFoodLog();
-window.onload = showRandomQuote;
+showInfo();
