@@ -19,6 +19,7 @@
     <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="apple-touch-icon" href="assets/icon.png">
     <link rel="stylesheet" href="frontend/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="overviewTab">
@@ -97,7 +98,7 @@
     </div>
 
     <div class="user-container hidden" id="userTab">
-        <div class="overview-welcome">
+        <div class="overview-welcome" style="margin-top: 15px;">
             <h1>User</h1>
         </div>
 
@@ -132,39 +133,112 @@
         
     </section>
 
-    
-
-    
-
     <div class="user-header" style=" display: flex;flex-direction: row; justify-content: space-between;" id="DeveloperInfo">
             <div class="user-card" style="width: 100vw;">
                 <div class="about-inner-sec">
-                    <h3 class="label" style="margin-top: 0px;">About</h3>
-                    <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Version 2.1.2</p>
-                    <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Developer: Dion Beres</p>
-                
-                    <h3 style="border-top: 1px solid #282828; padding-top: 10px;" class="label">Social</h3>
-                <div class="user-card-links" style=" display: flex; flex-direction: row; gap: 20px; ">
+                    <div style="padding-bottom: 15px;">
+                        <h3 class="label" style="margin-top: 0px;">About</h3>
+                        <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Version 2.3.2</p>
+                        <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Developer: Dion Beres</p>
+                    </div>
+                    <div>
+                        <h3 class="label" style="margin-top: 0px;border-top: 1px solid #282828; padding-top: 10px;">Legal Notice</h3>
+                        <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Icons: made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from www.flaticon.com</p>
+                    </div>
                     
-                    <a href="https://github.com/dionberes" target="_blank">
-                    <i class="fi fi-brands-github"></i></a>
+                    <h3 style="border-top: 1px solid #282828; padding-top: 10px;" class="label">Social</h3>
+                    <div class="user-card-links" style=" display: flex; flex-direction: row; gap: 20px; ">
+                        
+                        <a href="https://github.com/dionberes" target="_blank">
+                        <i class="fi fi-brands-github"></i></a>
 
-                    <a href="https://www.instagram.com/dionberes/" target="_blank">
-                    <i class="fi fi-brands-instagram"></i></a>
+                        <a href="https://www.instagram.com/dionberes/" target="_blank">
+                        <i class="fi fi-brands-instagram"></i></a>
 
-                    <a href="https://github.com/dionberes" target="_blank">
-                    <i class="fi fi-brands-tik-tok"></i></a>
+                        <a href="https://github.com/dionberes" target="_blank">
+                        <i class="fi fi-brands-tik-tok"></i></a>
 
-                    <a href="https://github.com/dionberes" target="_blank">
-                    <i class="fi fi-brands-facebook"></i></a>
-                </div>
+                        <a href="https://github.com/dionberes" target="_blank">
+                        <i class="fi fi-brands-facebook"></i></a>
+                    </div>
                 </div>
             </div> 
         </div>
     </div>
 
+    <div class="user-container hidden" id="StatsTab">
+        <div class="overview-welcome" style="margin-top: 15px;">
+            <h1>Stats</h1>
+        </div>
+        <div style="width: 90%; margin: 0 auto;">     
+
+        <div class="chart-container" style="margin-bottom: 20px;">
+            <canvas id="MealsChart"></canvas>
+        </div>      
+        
+            <div class="user-header" style=" display: flex;flex-direction: row; justify-content: space-between;" id="DeveloperInfo">
+            <div class="user-card" style="width: 100vw;">
+                <div class="about-inner-sec">
+                    <h3 class="label" style="margin-top: 0px;">Today Info</h3>
+                    <div class="sec-label-inner">
+                        <p>Total Kcal</p>
+                        <p id ="TotalKcal" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>0 Kcal</p>
+                    </div>
+                    <div class="sec-label-inner">
+                        <p>Total Proteins</p>
+                        <p id ="TotalProtein" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Proteins</p>
+                    </div>
+                    <div class="sec-label-inner">
+                        <p>Total Fats</p>
+                        <p id ="TotalFat" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Fats</p>
+                    </div>
+                    <div class="sec-label-inner">
+                        <p>Total Carbs</p>
+                        <p id ="TotalCarbs" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Carbs</p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    </div>   
+    </div>
+
+    <div class="user-container hidden" id="AppendTab">
+        <div class="overview-welcome" style="margin-top: 15px;">
+            <h1>Meals</h1>
+        </div>
+
+    <section class="user-card" style="margin-bottom: 15vh;">
+
+        <p class="helper-text" style="border-bottom: 1px solid #282828; padding-bottom: 10px;">Create your own Food/Meals and add them to your database.</p>
+
+        <form id="mealForm">
+            <label for="manualFoodName">Name</label>
+            <input id="MealsFoodName" type="text" placeholder="z.B. Selfmade Wrap">
+
+            <label for="kcal">Kcal</label>
+            <input id="kcal" type="number" min="1" step="1" placeholder="z.B. 620">
+
+            <label for="MealsFoodProtein">Protein (g)</label>
+            <input id="MealsFoodProtein" type="number" min="0" step="1" placeholder="z.B. 42">
+
+            <label for="MealsFoodFat">Fett (g)</label>
+            <input id="MealsFoodFat" type="number" min="0" step="1" placeholder="z.B. 21">
+
+            <label for="MealsFoodCarbs">Carbs (g)</label>
+            <input id="MealsFoodCarbs" type="number" min="0" step="1" placeholder="z.B. 56">
+
+            <br><br>
+            <button class="save-user-btn" onclick="AppendMeals()" type="button">Add</button>
+            <br><br>
+        </form>
+        
+    </section>
+    </div>
+
+
     <div class="add-container hidden" id="addTab">
-        <div class="overview-welcome">
+        <div class="overview-welcome" style="margin-top: 15px;">
                 <h1>Add Food</h1>
         </div>
      
@@ -205,33 +279,49 @@
                 <input id="manualFoodCarbs" type="number" min="0" step="1" placeholder="z.B. 56">
             </div>
 
-            <button class="save-user-btn" id="saveFoodBtn" type="button">hinzufügen</button>
+            <button class="save-user-btn" id="saveFoodBtn" type="button">Add</button>
         </section>
+        
 
     </div>
 
 
+
+
     <div class="bottom-hero">
         <section class="btn-container">
+            
             <section class="hero-btns">
                 <button class="btn" id="homeBtn" onclick="openHome()"><i class="fi fi-rr-home"></i></button>
                 <h2>Overview</h2>
             </section>
+      
+            <section class="hero-btns">
+                <button class="btn" id="homeBtn" onclick="openStats()"><i class="fi fi-rr-chart-simple"></i></button>
+                <h2>Stats</h2>
+            </section>
+            
             <section class="hero-btns">   
               <button class="btn-add" id="addBtn" onclick="openAdd()"><i class="fi fi-sr-plus"></i></button>
-            </section> 
+            </section>      
             <section class="hero-btns"> 
-              <button class="btn" id="userBtn" onclick="openUser()"><i class="fi fi-rr-user"></i></button>
-              <h2>User</h2>
+                <button class="btn" id="userBtn" onclick="openMeals()"><i class="fi fi-rr-edit"></i></button>
+                <h2>Meals</h2>
             </section> 
+
+            <section class="hero-btns">   
+                <button class="btn" id="userBtn" onclick="openUser()"><i class="fi fi-rr-user"></i></button>
+                <h2>User</h2>
+            </section> 
+        
         </section>
     </div>
 
     <script src="assets/data/foods-de.js"></script>
     <script src="backend/IndexLoader.js"></script>
-    <script>
-        DeveloperInfo = document.getElementById("DeveloperInfo");
-    </script>
+    <script src="backend/DataBaseAppend.js"></script>
+    <script src="backend/StatsChart.js"></script>
+       
 
 </body>
 </html>
