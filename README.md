@@ -8,7 +8,7 @@ Our moto is "Why should apps for your health cost?"
 v2.3.2  
 Last update: 04.04.2026
 
-## Update v2.1.2
+## Update v2.3.2
 - New UI
 - New backend system
 - Mobile friendlier system
