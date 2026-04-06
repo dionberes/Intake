@@ -12,6 +12,8 @@ Last update: 04.04.2026
 - New UI
 - New backend system
 - Mobile friendlier system
+- You can now finally add your own food to the database!
+- added a Statistik Tab
 
 ## Demo
 👉 https://dionberes.github.io/Intake/
