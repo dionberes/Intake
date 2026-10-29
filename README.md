@@ -4,15 +4,13 @@
 **Intake** is a free app for tracking your calories, protein, fats, and carbs.
 
 ## Version
-v2.3.2  
-Last update: 06.04.2026
+v2.0.1 
+Last update: 29.10.2026
 
-## Update v2.3.2
-- New UI
+## Update v2.0.1
+- Complete New APP foundation
 - New backend system
-- Mobile friendlier system
-- You can now finally add your own food to the database!
-- added a Statistik Tab
+
 
 ## Demo
 👉 https://dionberes.github.io/Intake/
