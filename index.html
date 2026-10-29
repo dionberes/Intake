@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <title>Intake</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,viewport-fit=cover, user-scalable=no">
+
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-solid/css/uicons-regular-rounded.css'>
@@ -12,33 +17,90 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-thin-rounded/css/uicons-thin-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css'>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#4C4E43">
-    <title>Intake</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
     <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="apple-touch-icon" href="assets/icon.png">
     <link rel="stylesheet" href="frontend/style.css">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+    <!-------------------------------------------->
+    <!--------------- Overview Tab --------------->
+    <!-------------------------------------------->
+    
     <div id="overviewTab">
+        <div class="overview-settings" id="overviewSettings">
+            <div class="user-container" id="userTab">
+            <div class="overview-welcome" style="margin-top: 5vh;">
+                <h1>User</h1>
+            </div>
+
+        <section class="user-card" style="margin-bottom: 5vh;">
+
+            <div class="mode-switch">
+                <button class="mode-btn active" id="autoModeBtn" type="button">Auto</button>
+                <button class="mode-btn" id="manualModeBtn" type="button">Manual</button>
+            </div>
+
+            <div id="autoModeArea">
+                <label for="weightInput">Weight (kg)</label>
+                <input id="weightInput" type="number" min="30" max="350" step="0.1" placeholder="e.g., 78.5">
+                <p class="helper-text">kcal = weight x 33, Protein = weight x 2, Fat = weight x 0.9</p>
+            </div>
+
+            <div id="manualModeArea" class="hidden">
+                <label for="manualKcal">Kcal Goal</label>
+                <input id="manualKcal" type="number" min="800" max="8000" step="1" placeholder="2400">
+
+                <label for="manualProtein">Protein (g)</label>
+                <input id="manualProtein" type="number" min="20" max="400" step="1" placeholder="160">
+
+                <label for="manualFat">Fat (g)</label>
+                <input id="manualFat" type="number" min="10" max="250" step="1" placeholder="80">
+
+                <label for="manualCarbs">Carbs (g)</label>
+                <input id="manualCarbs" type="number" min="20" max="1000" step="1" placeholder="260">
+            </div>
+
+            <button class="save-user-btn" id="saveUserBtn" type="button">Save</button>
+            
+        </section>
+            <div id="lowerFrame" style="display: flex; flex-direction: row; justify-content: space-between; height: 200px;" id="DeveloperInfo">
+                <div style="width: 100vw;">
+                    <div class="about-inner-sec">
+                        <div class="user-card-links" style=" display: flex; gap: 5px; flex-direction: column; justify-content: center; align-items: center;">
+                        <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px;" Inter;>Version 2.0</p>
+                            
+                            <a href="https://github.com/dionberes" target="_blank">
+                            <i class="fi fi-brands-github"></i></a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            </div>
+
+        </div>
         <div class="top-frame-xdc" >
             <div class="overview-head" style="margin-top: 20px;">
                 
-                <div class="overview-welcome">
-                    <h1 style="color: #212121 !important;">Intake</h1>
+                <div class="overview-welcome" style="padding-top: 0px;">
+                    <h1>Intake</h1>
                 </div>
                 <div class="overview-head-right">
-                    <button class="top-avatar-btn" type="button" onclick="openUser()" aria-label="Zu User"><i class="fi fi-rr-user"></i></button>
+
+                    <button class="overview-settings-btn" id="settingsBtn" type="button" onclick="slideSettings()"><i class="fi fi-rr-settings-sliders"></i></button>
                     <img src="assets/icon.png" alt="" style="width: 35px; height: 35px; border-radius: 2px;">
+
                 </div>
             </div>
 
             <div class="con-ov" style="margin-top: -25px; display: flex; flex-direction: row; align-items: center; gap: 15px;">
                 <section class="sec" style="background: transparent; box-shadow: none; ">
-                    <h1 class="lower-tsa" style="color: #212121;">Daily Goal</h1>
-                    <h2 id="goalKcal" style="color: #212121;">0 kcal</h2>    
+                    <h1 class="lower-tsa">Daily Goal</h1>
+                    <h2 id="goalKcal">0 kcal</h2>    
                 </section>
 
                 <div class="progress-l" style="background: transparent; box-shadow: none; margin-bottom: 15px;">
@@ -52,7 +114,7 @@
             
 
             <div>
-                <div class="today-t" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: end; height: 100%; background: #212121; gap: 10px;">
+                <div class="today-t" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: end; height: 100%; gap: 10px;">
                     <div>
                         <h1 class="lower-tsa" style="color: #8f9298;">Today</h1>
                     </div>
@@ -67,17 +129,17 @@
                 <section class="macro-card">
                     <h3>Carbs</h3>
                     <p id="goalCarbs">0 / 359g</p>
-                    <div class="mini-progress"><span id="goalCarbsBar" style="width: 72%; background: #EDCBE3;"></span></div>
+                    <div class="mini-progress"><span id="goalCarbsBar" style="width: 0%; background: #EDCBE3;"></span></div>
                 </section>
                 <section class="macro-card">
                     <h3>Protein</h3>
                     <p id="goalProtein">0 / 143g</p>
-                    <div class="mini-progress"><span id="goalProteinBar" style="width: 100%; background: #CFDECB;"></span></div>
+                    <div class="mini-progress"><span id="goalProteinBar" style="width: 0%; background: #CFDECB;"></span></div>
                 </section>
                 <section class="macro-card">
                     <h3>Fat</h3>
                     <p id="goalFat">0 / 359g</p>
-                    <div class="mini-progress"><span id="goalFatBar" style="width: 47%; background: #EFEDA2;"></span></div>
+                    <div class="mini-progress"><span id="goalFatBar" style="width: 0%; background: #EFEDA2;"></span></div>
                 </section>
             </div>
 
@@ -97,231 +159,199 @@
         </div>
     </div>
 
-    <div class="user-container hidden" id="userTab">
-        <div class="overview-welcome" style="margin-top: 15px;">
-            <h1>User</h1>
-        </div>
-
-    <section class="user-card" style="margin-bottom: 15vh;">
-
-        <div class="mode-switch">
-            <button class="mode-btn active" id="autoModeBtn" type="button">Auto</button>
-            <button class="mode-btn" id="manualModeBtn" type="button">Manual</button>
-        </div>
-
-        <div id="autoModeArea">
-            <label for="weightInput">Weight (kg)</label>
-            <input id="weightInput" type="number" min="30" max="350" step="0.1" placeholder="e.g., 78.5">
-            <p class="helper-text">kcal = weight x 33, Protein = weight x 2, Fat = weight x 0.9</p>
-        </div>
-
-        <div id="manualModeArea" class="hidden">
-            <label for="manualKcal">Kcal Goal</label>
-            <input id="manualKcal" type="number" min="800" max="8000" step="1" placeholder="2400">
-
-            <label for="manualProtein">Protein (g)</label>
-            <input id="manualProtein" type="number" min="20" max="400" step="1" placeholder="160">
-
-            <label for="manualFat">Fat (g)</label>
-            <input id="manualFat" type="number" min="10" max="250" step="1" placeholder="80">
-
-            <label for="manualCarbs">Carbs (g)</label>
-            <input id="manualCarbs" type="number" min="20" max="1000" step="1" placeholder="260">
-        </div>
-
-        <button class="save-user-btn" id="saveUserBtn" type="button">Save</button>
-        
-    </section>
-
-    <div class="user-header" style=" display: flex;flex-direction: row; justify-content: space-between;" id="DeveloperInfo">
-            <div class="user-card" style="width: 100vw;">
-                <div class="about-inner-sec">
-                    <div style="padding-bottom: 15px;">
-                        <h3 class="label" style="margin-top: 0px;">About</h3>
-                        <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Version 2.3.2</p>
-                        <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Developer: Dion Beres</p>
-                    </div>
-                    <div>
-                        <h3 class="label" style="margin-top: 0px;border-top: 1px solid #282828; padding-top: 10px;">Legal Notice</h3>
-                        <p style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>Icons: made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from www.flaticon.com</p>
-                    </div>
-                    
-                    <h3 style="border-top: 1px solid #282828; padding-top: 10px;" class="label">Social</h3>
-                    <div class="user-card-links" style=" display: flex; flex-direction: row; gap: 20px; ">
-                        
-                        <a href="https://github.com/dionberes" target="_blank">
-                        <i class="fi fi-brands-github"></i></a>
-
-                        <a href="https://www.instagram.com/dionberes/" target="_blank">
-                        <i class="fi fi-brands-instagram"></i></a>
-
-                        <a href="https://github.com/dionberes" target="_blank">
-                        <i class="fi fi-brands-tik-tok"></i></a>
-
-                        <a href="https://github.com/dionberes" target="_blank">
-                        <i class="fi fi-brands-facebook"></i></a>
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </div>
-
     <div class="user-container hidden" id="StatsTab">
-        <div class="overview-welcome" style="margin-top: 15px;">
-            <h1>Stats</h1>
-        </div>
-        <div style="width: 90%; margin: 0 auto;">     
+            <div class="overview-welcome" style="margin-top: 15px;">
+                <h1>Stats</h1>
+            </div>
+            <div style="width: 90%; margin: 0 auto;">     
 
-        <div class="chart-container" style="margin-bottom: 20px;">
-            <canvas id="MealsChart"></canvas>
-        </div>      
-        
-            <div class="user-header" style=" display: flex;flex-direction: row; justify-content: space-between;" id="DeveloperInfo">
-            <div class="user-card" style="width: 100vw;">
-                <div class="about-inner-sec">
-                    <h3 class="label" style="margin-top: 0px;">Today Info</h3>
-                    <div class="sec-label-inner">
-                        <p>Total Kcal</p>
-                        <p id ="TotalKcal" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>0 Kcal</p>
-                    </div>
-                    <div class="sec-label-inner">
-                        <p>Total Proteins</p>
-                        <p id ="TotalProtein" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Proteins</p>
-                    </div>
-                    <div class="sec-label-inner">
-                        <p>Total Fats</p>
-                        <p id ="TotalFat" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Fats</p>
-                    </div>
-                    <div class="sec-label-inner">
-                        <p>Total Carbs</p>
-                        <p id ="TotalCarbs" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Carbs</p>
-                    </div>
+            <div class="chart-container" style="margin-bottom: 20px;">
+                <canvas id="MealsChart"></canvas>
+            </div>      
+                
+                <div class="user-header" style=" display: flex;flex-direction: row; justify-content: space-between;" id="DeveloperInfo">
+                    <div class="user-card" style="width: 100vw;">
+                        <div class="about-inner-sec">
+                            <h3 class="label" style="margin-top: 0px;">Today Info</h3>
+                            <div class="sec-label-inner">
+                                <p>Total Kcal</p>
+                                <p id ="TotalKcal" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;>0 Kcal</p>
+                            </div>
+                            <div class="sec-label-inner">
+                                <p>Total Proteins</p>
+                                <p id ="TotalProtein" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Proteins</p>
+                            </div>
+                            <div class="sec-label-inner">
+                                <p>Total Fats</p>
+                                <p id ="TotalFat" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Fats</p>
+                            </div>
+                            <div class="sec-label-inner">
+                                <p>Total Carbs</p>
+                                <p id ="TotalCarbs" style="font-family: Inter; color: #f2f2f2; font-weight: 300; font-size: 12px; line-height: 14px;" Inter;> 0 Carbs</p>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
-            </div> 
-        </div>
-    </div>
-    </div>   
+            </div>
+        </div>   
     </div>
 
-    <div class="user-container hidden" id="AppendTab">
-        <div class="overview-welcome" style="margin-top: 15px;">
-            <h1>Meals</h1>
-        </div>
-
-    <section class="user-card" style="margin-bottom: 15vh;">
-
-        <p class="helper-text" style="border-bottom: 1px solid #282828; padding-bottom: 10px;">Create your own Food/Meals and add them to your database.</p>
-
-        <form id="mealForm">
-            <label for="manualFoodName">Name</label>
-            <input id="MealsFoodName" type="text" placeholder="z.B. Selfmade Wrap">
-
-            <label for="kcal">Kcal</label>
-            <input id="kcal" type="number" min="1" step="1" placeholder="z.B. 620">
-
-            <label for="MealsFoodProtein">Protein (g)</label>
-            <input id="MealsFoodProtein" type="number" min="0" step="1" placeholder="z.B. 42">
-
-            <label for="MealsFoodFat">Fett (g)</label>
-            <input id="MealsFoodFat" type="number" min="0" step="1" placeholder="z.B. 21">
-
-            <label for="MealsFoodCarbs">Carbs (g)</label>
-            <input id="MealsFoodCarbs" type="number" min="0" step="1" placeholder="z.B. 56">
-
-            <br><br>
-            <button class="save-user-btn" onclick="AppendMeals()" type="button">Add</button>
-            <br><br>
-        </form>
-        
-    </section>
-    </div>
-
+   
+    <!-------------------------------------------->
+    <!--------------- Add Food Tab --------------->
+    <!-------------------------------------------->
 
     <div class="add-container hidden" id="addTab">
-        <div class="overview-welcome" style="margin-top: 15px;">
-                <h1>Add Food</h1>
-        </div>
-     
+        
+            <div class="user-container" id="AppendTab">
+                <div class="appendTabBG">
+                    <div class="overview-welcome" style="margin-top: 15px;">
+                        <h1>Meals</h1>
+                    </div>
+                    
+                    <section class="user-card" style="margin-bottom: 15vh;">
+                        <p class="helper-text" style="border-bottom: 1px solid #282828; padding-bottom: 10px;">Create your own Food/Meals and add them to your database.</p>
 
-        <section class="user-card">
-            <div class="mode-switch">
-                <button class="mode-btn active" id="foodDbModeBtn" type="button">Search</button>
-                <button class="mode-btn" id="foodManualModeBtn" type="button">Manual</button>
-            </div>
+                        <form id="mealForm">
+                            <label for="manualFoodName">Name</label>
+                            <input id="MealsFoodName" type="text" placeholder="z.B. Selfmade Wrap">
 
-            <div id="foodDbArea">
-                <label for="foodSearchInput">Search Food</label>
-                <input id="foodSearchInput" type="text" placeholder="Search for food">
-                <div class="food-search-results" id="foodSearchResults"></div>
+                            <label for="kcal">Kcal</label>
+                            <input id="kcal" type="number" min="1" step="1" placeholder="z.B. 620">
 
-                <label for="foodAmountInput">Amount (Portion)</label>
-                <input id="foodAmountInput" type="number" min="0.1" step="0.1" value="1">
+                            <label for="MealsFoodProtein">Protein (g)</label>
+                            <input id="MealsFoodProtein" type="number" min="0" step="1" placeholder="z.B. 42">
 
-                <div class="selected-food-card" id="selectedFoodCard">
-                    <p>No food selected.</p>
+                            <label for="MealsFoodFat">Fett (g)</label>
+                            <input id="MealsFoodFat" type="number" min="0" step="1" placeholder="z.B. 21">
+
+                            <label for="MealsFoodCarbs">Carbs (g)</label>
+                            <input id="MealsFoodCarbs" type="number" min="0" step="1" placeholder="z.B. 56">
+
+                            <br><br>
+
+                                <button class="save-user-btn" onclick="AppendMeals()" type="button">Add</button>
+        
+                                <button class="closeAppendTabBtn" id="appendTabClose" type="button" ><i class="fi fi-rr-angle-up"></i></button>
+                            <br><br>
+                        </form>
+                    </section>
                 </div>
             </div>
-
-            <div id="foodManualArea" class="hidden">
-                <label for="manualFoodName">Name</label>
-                <input id="manualFoodName" type="text" placeholder="z.B. Selfmade Wrap">
-
-                <label for="manualFoodKcal">Kcal</label>
-                <input id="manualFoodKcal" type="number" min="1" step="1" placeholder="z.B. 620">
-
-                <label for="manualFoodProtein">Protein (g)</label>
-                <input id="manualFoodProtein" type="number" min="0" step="1" placeholder="z.B. 42">
-
-                <label for="manualFoodFat">Fett (g)</label>
-                <input id="manualFoodFat" type="number" min="0" step="1" placeholder="z.B. 21">
-
-                <label for="manualFoodCarbs">Carbs (g)</label>
-                <input id="manualFoodCarbs" type="number" min="0" step="1" placeholder="z.B. 56">
-            </div>
-
-            <button class="save-user-btn" id="saveFoodBtn" type="button">Add</button>
-        </section>
         
+            <div id="addFoodFrame">
+                <div class="overview-welcome" style="margin-top: 15px;" >
+                        <h1>Add Food</h1>
+                        <button class="add-food-btn" id="openAddFoodTab" type="button" aria-expanded="false" aria-controls="AppendTab"><i class="fi fi-rr-plus"></i></button>
+                </div>
+            
 
+                <section class="user-card">
+                    <div class="mode-switch">
+                        <button class="mode-btn active" id="foodDbModeBtn" type="button">Search</button>
+                        <button class="mode-btn" id="foodManualModeBtn" type="button">Manual</button>
+                    </div>
+
+                    <div id="foodDbArea">
+                        <label for="foodSearchInput">Search Food</label>
+                        <input id="foodSearchInput" type="text" placeholder="Search for food">
+                        <div class="food-search-results" id="foodSearchResults"></div>
+
+                        <label for="foodAmountInput">Amount (Portion)</label>
+                        <input id="foodAmountInput" type="number" min="0.1" step="0.1" value="1">
+
+
+                    </div>
+
+                    <div id="foodManualArea" class="hidden">
+                        <label for="manualFoodName">Name</label>
+                        <input id="manualFoodName" type="text" placeholder="z.B. Selfmade Wrap">
+
+                        <label for="manualFoodKcal">Kcal</label>
+                        <input id="manualFoodKcal" type="number" min="1" step="1" placeholder="z.B. 620">
+
+                        <label for="manualFoodProtein">Protein (g)</label>
+                        <input id="manualFoodProtein" type="number" min="0" step="1" placeholder="z.B. 42">
+
+                        <label for="manualFoodFat">Fett (g)</label>
+                        <input id="manualFoodFat" type="number" min="0" step="1" placeholder="z.B. 21">
+
+                        <label for="manualFoodCarbs">Carbs (g)</label>
+                        <input id="manualFoodCarbs" type="number" min="0" step="1" placeholder="z.B. 56">
+                    </div>
+                        <div class="selected-food-card" id="selectedFoodCard">
+                            <p>No food selected.</p>
+                        </div>
+                    <button class="save-user-btn" id="saveFoodBtn" type="button" hidden>Add</button>
+                </section>
+            </div>         
+        <div>
+        
+        </div>
     </div>
 
-
-
+    <!--------------------------------------->
+    <!--------------- Gym Tab --------------->
+    <!--------------------------------------->
+    
+    <div class="gym-tab hidden" id="gymTab">
+        <div class="gym-header">
+            <button class="gym-icon-btn" type="button" onclick="openHome()" aria-label="Zurück">
+                <i class="fi fi-rr-angle-small-down"></i>
+            </button>
+            <div class="gym-header-right">
+                <button class="gym-icon-btn" type="button" aria-label="Einstellungen">
+                    <i class="fi fi-rr-settings-sliders"></i>
+                </button>
+                <button class="gym-finish-btn" id="gymFinishBtn" type="button">Finish</button>
+            </div>
+        </div>
+        <div class="gym-timer-block">
+            <h1 class="gym-timer" id="gymTimer">00:00</h1>
+            <p class="gym-status" id="gymStatus">Workout · Ready</p>
+        </div>
+        <div class="gym-exercise-list" id="gymExerciseList"></div>
+        <div class="gym-up-next" id="gymUpNext">
+            <div class="gym-up-next-left">
+                <div class="gym-ex-icon" id="gymNextIcon"><i class="fi fi-rr-gym"></i></div>
+                <div>
+                    <p class="gym-up-next-label">Up next</p>
+                    <p class="gym-up-next-name" id="gymNextName">—</p>
+                </div>
+            </div>
+            <button class="gym-next-btn" id="gymNextBtn" type="button">
+                <i class="fi fi-rr-arrow-small-right"></i>
+                Next
+            </button>
+        </div>
+    </div>
 
     <div class="bottom-hero">
         <section class="btn-container">
-            
+
             <section class="hero-btns">
-                <button class="btn" id="homeBtn" onclick="openHome()"><i class="fi fi-rr-home"></i></button>
-                <h2>Overview</h2>
+                <button class="btn" id="gymBtn" onclick="openGym()"><i class="fi fi-rr-gym"></i></button>           
             </section>
-      
+
             <section class="hero-btns">
-                <button class="btn" id="homeBtn" onclick="openStats()"><i class="fi fi-rr-chart-simple"></i></button>
-                <h2>Stats</h2>
+                <button class="btn-add" id="addBtn" onclick="openAdd()"><i class="fi fi-sr-plus"></i></button>    
             </section>
-            
-            <section class="hero-btns">   
-              <button class="btn-add" id="addBtn" onclick="openAdd()"><i class="fi fi-sr-plus"></i></button>
-            </section>      
-            <section class="hero-btns"> 
-                <button class="btn" id="userBtn" onclick="openMeals()"><i class="fi fi-rr-edit"></i></button>
-                <h2>Meals</h2>
+
+            <section class="hero-btns">
+                <button class="btn" id="userBtn" onclick="openOverview()"><i class="fi fi-sr-croissant"></i></button>   
             </section> 
 
-            <section class="hero-btns">   
-                <button class="btn" id="userBtn" onclick="openUser()"><i class="fi fi-rr-user"></i></button>
-                <h2>User</h2>
-            </section> 
-        
         </section>
     </div>
 
     <script src="assets/data/foods-de.js"></script>
+    <script src="backend/dataGrabber.js"></script>
+    <script src="backend/OverviewTab.js"></script>
+    <script src="backend/AddFoodTab.js"></script>
+    <script src="backend/MealsTab.js"></script>
+    <script src="backend/GymTab.js"></script>
+    <script src="backend/StatsTab.js"></script>
     <script src="backend/IndexLoader.js"></script>
-    <script src="backend/DataBaseAppend.js"></script>
-    <script src="backend/StatsChart.js"></script>
-       
 
 </body>
 </html>
