@@ -4,10 +4,10 @@
 **Intake** is a free app for tracking your calories, protein, fats, and carbs.
 
 ## Version
-v2.3.2  
+v1.3.2  
 Last update: 06.04.2026
 
-## Update v2.3.2
+## Update v1.3.2
 - New UI
 - New backend system
 - Mobile friendlier system
